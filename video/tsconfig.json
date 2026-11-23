@@ -11,5 +11,5 @@
     "noEmit": true,
     "lib": ["DOM", "ES2020"]
   },
-  "include": ["src", "../episodes"]
+  "include": ["src"]
 }

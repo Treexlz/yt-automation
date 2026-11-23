@@ -1,9 +1,13 @@
 node_modules/
-video/out/
-video/public/audio/
 out/
 build/
 models/
+audio/
+music/
+cache/
+data/
+jobs.db
+video/.bundle-cache/
 __pycache__/
 *.pyc
 .env

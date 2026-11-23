@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>yt-automation</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='44' fill='%230d1b2a' stroke='%23e8b04b' stroke-width='8'/><path d='M30 55 L45 40 L60 55 L72 42' stroke='%239b2d3a' stroke-width='9' fill='none' stroke-linecap='round'/></svg>">
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#/">yt<span>·</span>automation</a>
+    <nav id="nav">
+      <a href="#/" data-route="dashboard">Dashboard</a>
+      <a href="#/episodes" data-route="episodes">Episodes</a>
+      <a href="#/videos" data-route="videos">Videos</a>
+      <a href="#/voices" data-route="voices">Voices</a>
+      <a href="#/music" data-route="music">Music</a>
+      <a href="#/settings" data-route="settings">Settings</a>
+    </nav>
+    <div id="queue-pill" class="pill hidden"></div>
+  </header>
+  <main id="app"></main>
+  <div id="toast" class="toast hidden"></div>
+  <script src="/static/app.js"></script>
+</body>
+</html>

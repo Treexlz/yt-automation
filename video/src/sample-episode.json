@@ -1,0 +1,339 @@
+{
+  "title": "What if Rome never fell?",
+  "hook": "What if Rome NEVER fell?",
+  "factions": {
+    "rome": {
+      "color": "#9b2d3a",
+      "countries": [
+        "Italy",
+        "France",
+        "Spain",
+        "Portugal",
+        "United Kingdom",
+        "Belgium",
+        "Switzerland",
+        "Austria",
+        "Slovenia",
+        "Croatia",
+        "Bosnia and Herz.",
+        "Serbia",
+        "Montenegro",
+        "Kosovo",
+        "Albania",
+        "Macedonia",
+        "Greece",
+        "Bulgaria",
+        "Romania",
+        "Turkey",
+        "Syria",
+        "Lebanon",
+        "Israel",
+        "Palestine",
+        "Jordan",
+        "Egypt",
+        "Libya",
+        "Tunisia",
+        "Algeria",
+        "Morocco",
+        "Cyprus",
+        "N. Cyprus",
+        "San Marino",
+        "Vatican",
+        "Monaco",
+        "Andorra",
+        "Malta"
+      ]
+    }
+  },
+  "scenes": [
+    {
+      "id": "intro",
+      "narration": "In 476 AD, the last emperor of the Western Roman Empire was overthrown. But what if Rome had never fallen?",
+      "year": "476 AD",
+      "title": "What if Rome never fell?",
+      "camera": {
+        "center": [
+          14,
+          38
+        ],
+        "zoom": 3.0
+      },
+      "regions": [
+        {
+          "faction": "rome",
+          "color": "#8a2836"
+        }
+      ]
+    },
+    {
+      "id": "one-empire",
+      "narration": "Picture it. No barbarian kingdoms carving up the West. One emperor and one law, stretching from Britain all the way to Egypt.",
+      "camera": {
+        "center": [
+          16,
+          40
+        ],
+        "zoom": 4.0
+      },
+      "regions": [
+        {
+          "faction": "rome",
+          "label": "Roman Empire",
+          "labelAt": [
+            24,
+            46.8
+          ]
+        }
+      ],
+      "labels": [
+        {
+          "text": "Rome",
+          "coord": [
+            12.5,
+            41.9
+          ]
+        },
+        {
+          "text": "Londinium",
+          "coord": [
+            -0.13,
+            51.5
+          ]
+        },
+        {
+          "text": "Alexandria",
+          "coord": [
+            29.9,
+            31.2
+          ]
+        }
+      ]
+    },
+    {
+      "id": "engineers",
+      "narration": "With its trade routes intact, Roman engineers keep building. Roads, aqueducts and concrete never become lost arts.",
+      "camera": {
+        "center": [
+          13.5,
+          42
+        ],
+        "zoom": 16
+      },
+      "regions": [
+        {
+          "faction": "rome"
+        }
+      ],
+      "labels": [
+        {
+          "text": "Rome",
+          "coord": [
+            12.5,
+            41.9
+          ]
+        },
+        {
+          "text": "Ravenna",
+          "coord": [
+            12.2,
+            44.4
+          ]
+        },
+        {
+          "text": "Mare Nostrum",
+          "coord": [
+            16.5,
+            38.8
+          ],
+          "kind": "area"
+        }
+      ]
+    },
+    {
+      "id": "germania",
+      "narration": "By 800 AD there is no Charlemagne. Instead, the legions push north into the forests of Germania, and this time they stay.",
+      "year": "800 AD",
+      "camera": {
+        "center": [
+          11,
+          49
+        ],
+        "zoom": 5.5
+      },
+      "regions": [
+        {
+          "faction": "rome",
+          "countries": [
+            "Germany",
+            "Netherlands",
+            "Luxembourg",
+            "Liechtenstein",
+            "Czechia",
+            "Denmark",
+            "Hungary"
+          ]
+        }
+      ],
+      "labels": [
+        {
+          "text": "Germania",
+          "coord": [
+            11,
+            53.6
+          ],
+          "kind": "area"
+        }
+      ],
+      "arrows": [
+        {
+          "from": [
+            6.8,
+            46.6
+          ],
+          "to": [
+            7.8,
+            51
+          ]
+        },
+        {
+          "from": [
+            15,
+            47.3
+          ],
+          "to": [
+            14.4,
+            51
+          ]
+        }
+      ]
+    },
+    {
+      "id": "scholars",
+      "narration": "Scholars in Alexandria and Constantinople share ideas across one connected world. Inventions like the printing press might arrive centuries early.",
+      "camera": {
+        "center": [
+          28,
+          36
+        ],
+        "zoom": 6
+      },
+      "regions": [
+        {
+          "faction": "rome",
+          "countries": [
+            "Germany",
+            "Netherlands",
+            "Luxembourg",
+            "Liechtenstein",
+            "Czechia",
+            "Denmark",
+            "Hungary"
+          ]
+        }
+      ],
+      "labels": [
+        {
+          "text": "Constantinople",
+          "coord": [
+            28.98,
+            41.01
+          ]
+        },
+        {
+          "text": "Alexandria",
+          "coord": [
+            29.9,
+            31.2
+          ]
+        }
+      ],
+      "arrows": [
+        {
+          "from": [
+            29.9,
+            31.6
+          ],
+          "to": [
+            28.9,
+            40.6
+          ]
+        }
+      ]
+    },
+    {
+      "id": "atlantic",
+      "narration": "And Roman ships might cross the Atlantic, reaching a new world hundreds of years before Columbus.",
+      "year": "1000 AD",
+      "camera": {
+        "center": [
+          -28,
+          40
+        ],
+        "zoom": 2.2
+      },
+      "regions": [
+        {
+          "faction": "rome",
+          "countries": [
+            "Germany",
+            "Netherlands",
+            "Luxembourg",
+            "Liechtenstein",
+            "Czechia",
+            "Denmark",
+            "Hungary"
+          ]
+        }
+      ],
+      "arrows": [
+        {
+          "from": [
+            -9.5,
+            38.7
+          ],
+          "to": [
+            -60,
+            46
+          ],
+          "color": "#e8b04b"
+        }
+      ],
+      "labels": [
+        {
+          "text": "Atlantic Ocean",
+          "coord": [
+            -38,
+            36
+          ],
+          "kind": "area"
+        }
+      ]
+    },
+    {
+      "id": "outro",
+      "narration": "Latin could be the world's language today. So, would you want to live in a world where Rome never fell? Tell me in the comments.",
+      "title": "Would you live in Roman Earth?",
+      "camera": {
+        "center": [
+          10,
+          36
+        ],
+        "zoom": 2.6
+      },
+      "regions": [
+        {
+          "faction": "rome",
+          "countries": [
+            "Germany",
+            "Netherlands",
+            "Luxembourg",
+            "Liechtenstein",
+            "Czechia",
+            "Denmark",
+            "Hungary"
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,3 +1,10 @@
+# Voices
 kokoro-onnx>=0.4
 soundfile>=0.12
 edge-tts>=7.0
+# Web UI
+fastapi>=0.110
+uvicorn>=0.29
+python-multipart>=0.0.9
+# Optional: script drafting with Claude (needs ANTHROPIC_API_KEY)
+anthropic>=0.40

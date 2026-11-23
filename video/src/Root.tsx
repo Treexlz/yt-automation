@@ -3,7 +3,7 @@ import {Composition, type CalculateMetadataFunction} from 'remotion';
 import {Episode} from './Episode';
 import type {Episode as EpisodeT} from './types';
 import {FPS, totalFrames} from './timing';
-import sample from '../../episodes/rome-never-fell.json';
+import sample from './sample-episode.json';
 import './theme';
 
 const calculateMetadata: CalculateMetadataFunction<EpisodeT> = ({props}) => ({

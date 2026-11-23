@@ -21,8 +21,7 @@ import urllib.request
 from dataclasses import dataclass
 from pathlib import Path
 
-ROOT = Path(__file__).resolve().parent.parent
-MODELS = ROOT / "models"
+from config import MODELS
 
 KOKORO_FILES = {
     "kokoro-v1.0.int8.onnx": "https://github.com/thewh1teagle/kokoro-onnx/releases/download/model-files-v1.0/kokoro-v1.0.int8.onnx",
@@ -167,3 +166,32 @@ PROVIDERS = {
 
 def say(provider: str, text: str, voice: str | None, out: Path) -> Speech:
     return PROVIDERS[provider](text, voice or DEFAULT_VOICES[provider], out)
+
+
+def list_voices(provider: str) -> list[str]:
+    """Voices to offer in the web UI."""
+    if provider == "kokoro":
+        return [
+            "bm_george", "bm_lewis", "bm_daniel", "bm_fable", "bf_emma", "bf_isabella",
+            "bf_alice", "bf_lily", "am_michael", "am_adam", "am_onyx", "am_echo",
+            "am_eric", "am_liam", "af_heart", "af_bella", "af_nicole", "af_sarah",
+        ]
+    if provider == "edge":
+        return [
+            "en-GB-RyanNeural", "en-GB-ThomasNeural", "en-GB-SoniaNeural", "en-GB-LibbyNeural",
+            "en-US-GuyNeural", "en-US-ChristopherNeural", "en-US-AriaNeural", "en-US-JennyNeural",
+        ]
+    if provider == "openai":
+        return ["onyx", "echo", "fable", "nova", "alloy", "shimmer", "ash", "sage", "coral"]
+    if provider == "elevenlabs":
+        return [DEFAULT_VOICES["elevenlabs"]]
+    return []
+
+
+def available(provider: str) -> tuple[bool, str]:
+    """Whether a provider can be used right now, and why not if it can't."""
+    if provider == "elevenlabs" and not os.environ.get("ELEVENLABS_API_KEY"):
+        return False, "Set ELEVENLABS_API_KEY"
+    if provider == "openai" and not os.environ.get("OPENAI_API_KEY"):
+        return False, "Set OPENAI_API_KEY"
+    return True, ""

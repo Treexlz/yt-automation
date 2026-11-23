@@ -7,32 +7,78 @@ You write (or draft with Claude) an **episode script** in JSON: the narration, p
 - `out/<episode>-short.mp4`: 1080×1920 for Shorts, TikTok and Reels
 - `out/<episode>-long.mp4`: 1920×1080 for regular YouTube
 
-## Setup (once)
+## Run it with Docker (recommended: NAS or PC)
+
+```bash
+git clone https://github.com/Treexlz/yt-automation && cd yt-automation
+cp .env.example .env        # optional: password, Claude key, voice keys
+docker compose up -d
+```
+
+Open `http://<machine-ip>:8080`. Everything you make is stored in `./data`.
+
+`docker compose up -d` pulls the image GitHub Actions builds from this repo (`ghcr.io/treexlz/yt-automation`). The repo is private, so log in once first with a GitHub token that has `read:packages`:
+
+```bash
+echo <token> | docker login ghcr.io -u Treexlz --password-stdin
+```
+
+Or skip the login and build on the machine: `docker compose up -d --build` (takes a few minutes the first time).
+
+To update: `docker compose pull && docker compose up -d`.
+
+## The web UI
+
+- **Dashboard**: the current render with a live progress bar and log, plus the job queue and history (cancel and retry).
+- **Episodes**: create blank episodes, duplicate one, or **draft a whole script with Claude** from a one-line idea.
+- **Editor**: the JSON script with live validation (unknown countries, missing fields, under-a-minute warnings), a scene list with estimated timings, and a **Preview** button that renders any scene as an image in about 2 seconds. Choose formats, voice and music, then press Render.
+- **Videos**: watch, download and delete renders, with a YouTube thumbnail for each episode and **upload text** (titles, description, tags, TikTok caption, pinned comment).
+- **Voices**: try any voice before you use it.
+- **Music**: upload background tracks to play quietly under the narration.
+- **Settings**: configuration status and a searchable list of country names.
+
+Renders run one at a time in the background, so you can queue several and close the tab.
+
+## Run it without Docker
 
 You need **Node.js 18+**, **Python 3.10+** and **ffmpeg** on your PATH.
 
 ```bash
 cd video && npm install && cd ..
 pip install -r requirements.txt
+python pipeline/web.py      # web UI on http://localhost:8080
 ```
 
 On the first run, the free Kokoro voice model (~120 MB) downloads into `models/`.
 
-## Make a video
+### Command line
 
 ```bash
-python pipeline/make_video.py episodes/rome-never-fell.json                # vertical short
-python pipeline/make_video.py episodes/rome-never-fell.json --format both  # short + long
-python pipeline/make_video.py episodes/rome-never-fell.json --check        # validate only
+python pipeline/make_video.py rome-never-fell                 # vertical short + thumbnail
+python pipeline/make_video.py rome-never-fell --format both   # short + long
+python pipeline/make_video.py rome-never-fell --check         # validate only
 ```
 
-Preview and tweak live in the browser (hot reload while you edit the JSON):
+Preview and tweak the video code live in the browser:
 
 ```bash
 cd video && npx remotion studio
 ```
 
-### Voices
+## Configuration
+
+Set these in `.env` (Docker) or your shell. All are optional.
+
+| Variable | What it does |
+|---|---|
+| `APP_PASSWORD` | Password for the web UI (any username). Set it before exposing the app beyond your network. |
+| `ANTHROPIC_API_KEY` | Script drafting and upload text with Claude (a few pence per draft). |
+| `ANTHROPIC_MODEL` | Defaults to `claude-sonnet-5-5`. |
+| `ELEVENLABS_API_KEY`, `OPENAI_API_KEY` | Paid voice providers. |
+| `RENDER_CONCURRENCY` | Browser tabs per render. 2 suits a NAS; raise it on a fast PC. |
+| `YT_DATA_DIR` | Where data lives (`/data` in Docker, the repo folder otherwise). |
+
+## Voices
 
 | `--tts` | Cost | Notes |
 |---|---|---|
@@ -82,11 +128,14 @@ YouTube demonetises channels whose videos look template-made or repetitive. Vary
 ## Layout
 
 ```
-episodes/   episode scripts (JSON)
-pipeline/   Python: validation, TTS, render orchestration
-video/      Remotion project (React/TypeScript): map, captions, title cards
-docs/       reference (valid country names)
-out/        rendered videos (git-ignored)
+episodes/        sample episode scripts (copied into the data folder on first run)
+pipeline/        Python: core pipeline, TTS, job queue, web server, Claude helpers
+pipeline/webui/  the web UI (plain HTML/CSS/JS, no build step)
+video/           Remotion project (React/TypeScript): map, captions, title cards
+video/render.mjs programmatic renderer with progress output
+docs/            reference (valid country names)
 ```
+
+Data folder: `episodes/`, `out/` (videos, thumbnails, upload text), `audio/` (cached voiceovers), `music/`, `models/`, `cache/`, `jobs.db`.
 
 Fonts: Cardo and Montserrat, bundled under the SIL Open Font License. Map data: Natural Earth via `world-atlas` (public domain). Remotion is free for individuals and companies of up to 3 people.

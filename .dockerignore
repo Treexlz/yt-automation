@@ -1,0 +1,13 @@
+.git
+**/node_modules
+out
+build
+audio
+music
+cache
+models
+data
+jobs.db
+video/.bundle-cache
+**/__pycache__
+.env
