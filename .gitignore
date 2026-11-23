@@ -1,0 +1,10 @@
+node_modules/
+video/out/
+video/public/audio/
+out/
+build/
+models/
+__pycache__/
+*.pyc
+.env
+.DS_Store
