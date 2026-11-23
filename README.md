@@ -71,7 +71,7 @@ See `episodes/rome-never-fell.json`. The main pieces:
 ```
 
 - Country names must match `docs/countries.txt` (modern borders from Natural Earth). `--check` suggests fixes for typos.
-- Zoom guide: `1.5`–`2.5` continents, `4`–`6` a region like Europe, `8`–`10` one country.
+- Zoom guide: `1.5`–`2.5` an ocean or continent, `4`–`6` Europe and the Mediterranean, `9`–`12` a region like Italy and the Balkans, `15`–`20` one country.
 - A region can extend or trim a faction with `countries` / `remove`, and recolour it with `color`.
 - TikTok's Creator Rewards only pays for videos **over 1 minute**, so aim for ~170+ words of narration for shorts.
 
